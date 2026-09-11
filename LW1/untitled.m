@@ -2,7 +2,7 @@
 % Name: Hasmitha
 % Surname: Hariharan Sargunam
 % Group: EDIFU-25/1
-% Date: 22.01.2026
+% Date: 22.08.2026
 
 clc;
 clear;
@@ -34,13 +34,13 @@ xlabel('X-as')
 ylabel('F_1 [o-]  |  F_2 [-x-]')
 
 %% Section 2: Complementary Tasks
-% 1. Define variable N (assigned to the last digit of your student ID number, e.g., 5)
-N = 5; 
+% 1. Define variable N (last digit of student ID = 3)
+N = 3; 
 
-% 2. Vector with first element N+1, final element N+4, step size 0.5
-v = (N + 1) : 0.5 : (N + 4);
+% 2. Vector starting at N+1 (4), ending at N+4 (7), step size 0.5
+v = (N + 1) : 0.5 : (N + 4); % Result: [4, 4.5, 5, 5.5, 6, 6.5, 7]
 
-% 3. 3x3 matrix A starting at N, incrementing by 1 row by row
+% 3. 3x3 matrix A starting at N (3), incrementing by 1 row by row
 A = [N,   N+1, N+2; 
      N+3, N+4, N+5; 
      N+6, N+7, N+8];
@@ -56,11 +56,9 @@ elem_b = A(2:3, 1:2);
 elem_c = A([1, 3], [1, 3]);
 
 % 5. Concatenate matrix A with vector v
-% Vector v has 7 elements; transpose v to a column vector and pair with modified matrix rows/columns
-v_col = v(:); % Convert v to a column vector (7x1)
-% Resize or select matching elements for concatenation (e.g., adding v as a 4th column to A)
-v_mod = v(1:3)'; % Match 3 rows of matrix A
-A_concatenated = [A, v_mod];
+% Selecting 3 elements from v to match the 3 rows of matrix A as a new column
+v_col = v(1:3)'; 
+A_concatenated = [A, v_col];
 
 disp('Matrix A:')
 disp(A)
